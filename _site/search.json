@@ -5,7 +5,7 @@
       "title": "blog",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-12-04T13:54:21+09:00"
+      "last_modified": "2021-12-04T14:25:15+09:00"
     },
     {
       "path": "index.html",
@@ -13,7 +13,7 @@
       "description": "My R ponderings...\n",
       "author": [],
       "contents": "\r\n\r\nAbout me:\r\nEducation:\r\n\r\n\r\n\r\n",
-      "last_modified": "2021-12-04T13:54:22+09:00"
+      "last_modified": "2021-12-04T14:25:16+09:00"
     }
   ],
   "collections": ["posts/posts.json"]
