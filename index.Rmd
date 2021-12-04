@@ -1,0 +1,17 @@
+---
+title: "Seong Ho"
+description: |
+  My R ponderings...
+site: distill::distill_website
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+![](signature.png){width=200}
+
+## About me:
+
+## Education:
