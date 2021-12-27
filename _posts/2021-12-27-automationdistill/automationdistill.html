@@ -87,635 +87,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Seong Ho: blog</title>
+  <title>Automation of work using Windows scheduler</title>
+
+  <meta property="description" itemprop="description" content="윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기"/>
 
 
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-12-27"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-12-27"/>
+  <meta name="article:author" content="seongho"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Seong Ho: blog"/>
+  <meta property="og:title" content="Automation of work using Windows scheduler"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Seong Ho"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Seong Ho: blog"/>
+  <meta property="twitter:title" content="Automation of work using Windows scheduler"/>
+  <meta property="twitter:description" content="윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["blog"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","preview","output","categories"]}},"value":[{"type":"character","attributes":{},"value":["Automation of work using Windows scheduler"]},{"type":"character","attributes":{},"value":["윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["seongho"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":[]}},"value":[]}]}]},{"type":"character","attributes":{},"value":["2021-12-27"]},{"type":"character","attributes":{},"value":["scheduler.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","self_contained","highlight","highlight_downlit","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["default"]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["automation"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["addin.png","addinui.png","automationdistill_files/anchor-4.2.2/anchor.min.js","automationdistill_files/bowser-1.9.3/bowser.min.js","automationdistill_files/distill-2.2.21/template.v2.js","automationdistill_files/header-attrs-2.11/header-attrs.js","automationdistill_files/jquery-3.6.0/jquery-3.6.0.js","automationdistill_files/jquery-3.6.0/jquery-3.6.0.min.js","automationdistill_files/jquery-3.6.0/jquery-3.6.0.min.map","automationdistill_files/popper-2.6.0/popper.min.js","automationdistill_files/tippy-6.2.7/tippy-bundle.umd.min.js","automationdistill_files/tippy-6.2.7/tippy-light-border.css","automationdistill_files/tippy-6.2.7/tippy.css","automationdistill_files/tippy-6.2.7/tippy.umd.min.js","automationdistill_files/webcomponents-2.0.0/webcomponents.js","converter.png","log파일.png","rscript.exe파일.png","scheduler.png","동작만들기.png","새작업만들기.png","새트리거만들기.png","스케줄러.png","작업만들기.png","조건설정.png"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description || ''}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -2034,259 +1438,145 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="automationdistill_files/header-attrs-2.11/header-attrs.js"></script>
+  <script src="automationdistill_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="automationdistill_files/popper-2.6.0/popper.min.js"></script>
+  <link href="automationdistill_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="automationdistill_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="automationdistill_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="automationdistill_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="automationdistill_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="automationdistill_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="automationdistill_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"blog","authors":[]}
+{"title":"Automation of work using Windows scheduler","description":"윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기","authors":[{"author":"seongho","authorURL":{},"affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-12-27T00:00:00.000+09:00","citationText":"seongho, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a class="logo">
-<img src="control.png" alt="Logo"/>
-</a>
-<a href="index.html" class="title">Seong Ho</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="index.html">About</a>
-<a href="blog.html">Blog</a>
-<a href="https://github.com/SHo-JANG">
-<i class="fa fa-github" aria-hidden="true"></i>
-</a>
-<a href="https://www.linkedin.com/in/%EC%84%B1%ED%98%B8-%EC%9E%A5-9760ab226/">
-<i class="fab fa-linkedin-in" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).on("load", function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      page_category = decodeURIComponent(page_category)
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="blog">blog</h1>
-<a href="posts/2021-12-27-automationdistill/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["automation"]}</script>
-<div class="metadata">
-<div class="publishedDate">Dec. 27, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">seongho</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-12-27-automationdistill/scheduler.png"/>
-</div>
-<div class="description">
-<h2>Automation of work using Windows scheduler</h2>
-<div class="dt-tags">
-<div class="dt-tag">automation</div>
-</div>
-<p>윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기</p>
-</div>
-</a>
-<a href="posts/2021-12-04-buildingdistill/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Dec. 4, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Unknown</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-12-04-buildingdistill/capture.png"/>
-</div>
-<div class="description">
-<h2>Building a {distill} website</h2>
-<div class="dt-tags"></div>
-<p>How I built this site editing</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:articles">articles</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:automation">automation</a>
-<span class="category-count">(1)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>blog</h1>
+<h1>Automation of work using Windows scheduler</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">automation</div>
+</div>
 <!--/radix_placeholder_categories-->
-
+<p><p>윈도우 작업스케줄러에 Rscript등록하여 업무자동화하기</p></p>
 </div>
 
+<div class="d-byline">
+  seongho true 
+  
+<br/>2021-12-27
+</div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#다양한-방법들">다양한 방법들</a></li>
+<li><a href="#따라하면서-발생한-문제-및-해결방안">따라하면서 발생한 문제 및 해결방안</a>
+<ul>
+<li><a href="#충전기-꽂고-있을때만-스케줄러-실행-옵션해제하기">‘충전기 꽂고 있을때만 스케줄러 실행’ 옵션해제하기</a>
+<ul>
+<li><a href="#일반">일반</a></li>
+<li><a href="#트리거">트리거</a></li>
+<li><a href="#동작">동작</a></li>
+<li><a href="#조건">조건</a></li>
+</ul></li>
+<li><a href="#taskscheduler-패키지를-설치한-후-생기는-addins로-작업-등록했을-경우-주의사항">taskscheduleR 패키지를 설치한 후 생기는 Addins로 작업 등록했을 경우 주의사항</a></li>
+<li><a href="#한글-인코딩-문제">한글 인코딩 문제</a></li>
+</ul></li>
+<li><a href="#taskscheduler패키지-응용-아이디어"><code>taskscheduleR</code>패키지 응용 아이디어</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="다양한-방법들">다양한 방법들</h1>
+<p>찾아보니 스케줄러에 등록하는 방법은 다양했습니다. 아래 방법 이외에도 더 존재할 것입니다.</p>
+<ol type="1">
+<li><p><a href="https://www.youtube.com/watch?v=V6oyhDS4FEs">bat파일을 따로 저장하여(윈도우 배치파일) 이를 이용하여 스케줄러 등록</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=KSe1EHI-Us8&amp;t=5s">Rscript.exe 파일 및 내가 실행할 R파일의 경로를 이용한 스케줄러 등록</a></p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/taskscheduleR/vignettes/taskscheduleR.html"><code>taskscheduleR</code>패키지를 이용하여 스케줄러 등록</a><br />
+<a href="https://www.r-bloggers.com/2020/05/how-to-schedule-r-scripts/"><code>taskscheduleR</code> 사용방법</a></p></li>
+</ol>
+<p>이때까지만 해도 금방 원하는 작업을 설정할 수 있을 것 같았습니다. 위의 자료를 본 뒤에 제가 원하는 작업을 위해 따라해 봤지만 뜻대로 되지 않았습니다. 여기에는 예상치 못한 문제가 몇가지 있었습니다.</p>
+<p>제가 겪은 몇가지 문제들에 대해서 소개해 드리고 어떻게 해결할 수 있는지 소개하도록 하겠습니다.</p>
+<h1 id="따라하면서-발생한-문제-및-해결방안">따라하면서 발생한 문제 및 해결방안</h1>
+<h2 class="tabset tabset-fade" id="충전기-꽂고-있을때만-스케줄러-실행-옵션해제하기">‘충전기 꽂고 있을때만 스케줄러 실행’ 옵션해제하기</h2>
+<p>일단 윈도우 작업 스케줄러를 실행합니다. 검색창에 바로 뜨는 것을 클릭하면 됩니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="스케줄러.png" width="40%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="작업만들기.png" width="40%" style="display: block; margin: auto;" /><img src="새작업만들기.png" width="40%" style="display: block; margin: auto;" /></p>
+</div>
+<p>작업만들기를 누르면 이런 화면이 뜹니다.</p>
+<hr />
+<h3 id="일반">일반</h3>
+<p>스케줄러의 이름을 설정하고 어떤 작업인지 내용을 써놓는 부분입니다. 및의 보안 옵션은 어떻게 해도 스케줄이 작동했는데 어떤 차이가 있는지 자세히는 모르겠습니다.</p>
+<h3 id="트리거">트리거</h3>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="새트리거만들기.png" width="40%" style="display: block; margin: auto;" /></p>
+</div>
+<p>구체적으로 이 작업의 주기를 어떻게 정할지 설정할 수 있습니다. 저는 매주 평일마다 주가데이터를 크롤링하여 DB에 저장하기 위해 <code>매주</code> 옵션에서 평일들을 선택하였습니다. 세부 공휴일 여부에 따른 설정은 Rscript에서 조건문으로 설정하였습니다.</p>
+<h3 id="동작">동작</h3>
+<p>위에 소개했듯이 여러 방법이 있습니다만, 여기서는 <code>Rscript.exe</code>파일을 실행시키고 추가로 R파일 링크를 걸어주는 방법을 사용하겠습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="rscript.exe파일.png" width="40%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="동작만들기.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p><code>Shift</code>키를 누르고 임의의 파일을 우클릭하면, 경로를 복사하는 선택지가 나옵니다. 여기까지는 위의 링크들을 보면 충분히 따라할 수 있었습니다. 이때 위에서 걸어둔 링크에서는 없었지만, 중요한 옵션이 있었는데요, 바로 <strong>조건</strong> 입니다.</p>
+<h3 id="조건">조건</h3>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="조건설정.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p>제가 평소에는 항상 노트북 충전기를 꽂고 작업을 하는데 하필 이거 할때 충전중이 아니었습니다. 좀 긴 시간동안 헤매다가 이걸 발견했는데 너무 허무했습니다. 해제해두면 언제든 실행할 수 있으니 그냥 다 해제 했습니다. 옆에 있는 설정창에는 작업들이 겹치거나 오래걸리는 경우 어떻게 할지 설정하는 부분이 있습니다.</p>
+<h2 id="taskscheduler-패키지를-설치한-후-생기는-addins로-작업-등록했을-경우-주의사항">taskscheduleR 패키지를 설치한 후 생기는 Addins로 작업 등록했을 경우 주의사항</h2>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="addin.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="addinui.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p><code>taskscheduleR</code> 패키지를 설치하면, 명령어로도 임의의 스케줄을 생성, 실행, 삭제 시킬 수 있고, 이렇게 UI화면으로도 작업을 등록시킬 수 있습니다.</p>
+<p>이때 주의할 점은 <strong>내가 등록한 Rscript를 수정했을때</strong>, 그 수정된 결과가 자동으로 스케줄러로 실행되는 것이 아니라는 사실입니다. 왜냐하면 이 UI로 실행할 작업을 등록할때 그 Rscript파일을 임의의 위치로 복사하여, log파일과 같이 저장하기 때문입니다.</p>
+<p>따라서 그 위치에 복사된 <strong>Rscript파일도 똑같이 수정한 뒤 저장</strong>하거나, 아니면 <strong>작업을 삭제하고 다시 등록</strong>하면 해결됩니다.</p>
+<h2 id="한글-인코딩-문제">한글 인코딩 문제</h2>
+<p>이 문제는 로그파일을 보고나서야 해결방안을 찾을 수 있었습니다.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="log파일.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p>무엇인가 문자열 문제가 있었고, 지금까지의 경험상 인코딩의 문제일 것이라 생각했습니다. 하지만 이것을 어떻게 해결해야 할지 막막 했습니다. 다행히도 저와 같은 문제를 먼저 겪고 해결방안을 정리해 두신 자료를 찾았고 덕분에 쉽게 해결했습니다. 감사합니다.</p>
+<p><a href="http://aispiration.com/data-product/windows-task-scheduler.html">해결방안</a></p>
+<p><a href="https://www.branah.com/unicode-converter">유니코드 번역사이트</a></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="converter.png" width="70%" style="display: block; margin: auto;" /></p>
+</div>
+<p>한국거래소에서 주가데이터를 크롤링할때 여러 데이터를 결합하여 저장하기 위해 Rscript에 한글이름으로 된 열이 있었고,</p>
+<p>열 이름에 띄어쓰기가 있어 다시 적어주는 코드가 있었는데 이를 전부 UTF-16으로 변환하여 저장했습니다.</p>
+<p>열 이름으로 접근하여 필터링 하는 과정들은 열 번호로 접근하는 코드로 전부 변환하니 스케줄러가 정상적으로 작동했습니다.</p>
+<h1 id="taskscheduler패키지-응용-아이디어"><code>taskscheduleR</code>패키지 응용 아이디어</h1>
+<ul>
+<li>여러 업무를 자동화 하게 된다면 하나의 taskschedule 파일을 만들어서 그걸로 전체적인 스케줄 관리가 용이할 것 같습니다.</li>
+<li>하나의 스케쥴 스크립트안에 조건문으로 다른 임시 스케쥴러를 만들고 실행한 후 삭제하는 작업이 가능할 것 같습니다.</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
